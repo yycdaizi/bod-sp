@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 					http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd">
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	
+	<bean id="bizBodBean" class="com.ort.bodsp.ws.impl.BizBodImpl">
+		<property name="bizCrmService" ref="bizCrmService"></property>
+		<property name="bizUserIPService" ref="bizUserIPService"></property>
+	</bean>
+	<jaxws:endpoint id="bizBod" implementor="#bizBodBean" address="/BizBod" />
+		
+	<bean id="bizCrmService" class="com.ort.bodsp.axis.services.BizCrmService" factory-bean="bizCrmFactory" factory-method="getService" />
+	<bean id="bizCrmFactory" class="com.ort.bodsp.axis.services.BizCrmFactoryLocator"> 
+		<property name="address" value="http://demo1.ort.com.cn:8890/axis/services/BizCrm" /> 
+	</bean>
+	
+	<bean id="bizUserIPService" class="com.ort.bodsp.axis.services.BizUserIPService" factory-bean="bizUserIPFactory" factory-method="getService" />
+	<bean id="bizUserIPFactory" class="com.ort.bodsp.axis.services.BizUserIPFactoryLocator"> 
+		<property name="address" value="http://demo1.ort.com.cn:8890/axis/services/BizUserIP" /> 
+	</bean>
+</beans>
