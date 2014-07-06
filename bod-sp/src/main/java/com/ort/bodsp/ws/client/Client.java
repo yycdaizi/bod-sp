@@ -1,5 +1,9 @@
 package com.ort.bodsp.ws.client;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -17,7 +21,10 @@ public class Client {
 				"client-beans.xml");
 		BizBod bizBod = (BizBod) ctx.getBean("bizBod");
 
-		BodRequest request = new BodRequest("0012","start","192.168.0.1","cmcc");
+		DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
+		BodRequest request = new BodRequest("2014021414","Start","172.18.78.1","cmcc");
+		request.setTimestamp(format.format(new Date()));
+		request.setSign(request.calSign());
 		
 		BodResponse result= bizBod.bod(request);
 		System.out.println("Response: " + result.getResult());

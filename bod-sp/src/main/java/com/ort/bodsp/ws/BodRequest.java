@@ -3,6 +3,8 @@ package com.ort.bodsp.ws;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
+import com.ort.bodsp.util.MD5Utils;
+
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BodRequest {
 
@@ -92,6 +94,13 @@ public class BodRequest {
 		this.sign = sign;
 	}
 
+	public String calSign(){
+		try {
+			return MD5Utils.createMD5(transId+userIp+spCode+timestamp);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 	@Override
 	public String toString() {
 		return "BodRequest [transId=" + transId + ", opertype=" + opertype

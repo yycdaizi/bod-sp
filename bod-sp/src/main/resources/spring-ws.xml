@@ -5,9 +5,17 @@
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 	
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations" value="classpath:webservices.properties" />
+	</bean>
+	
 	<bean id="bizBodBean" class="com.ort.bodsp.ws.impl.BizBodImpl">
 		<property name="bizCrmService" ref="bizCrmService"></property>
 		<property name="bizUserIPService" ref="bizUserIPService"></property>
+		<property name="pwd" value="${bizCrmService.pwd}"></property>
+		<property name="serviceCode" value="${bizCrmService.serviceCode}"></property>
+		<property name="orgCode" value="${bizCrmService.orgCode}"></property>
+		<property name="callerCode" value="${bizUserIPService.callerCode}"></property>
 	</bean>
 	<jaxws:endpoint id="bizBod" implementor="#bizBodBean" address="/BizBod" />
 		
