@@ -22,7 +22,7 @@ public class Client {
 		BizBod bizBod = (BizBod) ctx.getBean("bizBod");
 
 		DateFormat format = new SimpleDateFormat("yyyyMMddHHmmss");
-		BodRequest request = new BodRequest("2014021414","Start","172.18.78.1","cmcc");
+		BodRequest request = new BodRequest("2014021414","Start","192.168.0.33","cmcc");
 		request.setTimestamp(format.format(new Date()));
 		request.setSign(request.calSign());
 		

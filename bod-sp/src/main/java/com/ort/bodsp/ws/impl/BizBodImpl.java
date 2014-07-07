@@ -45,7 +45,7 @@ public class BizBodImpl implements BizBod {
 					.getUserInfoByIP(new GetUserByIPRequest(callerCode, request
 							.getUserIp()));
 			
-			if(!"0".equals(userInfo.getResult())){
+			if(userInfo.getResult() != 0){
 				return new BodResponse(-1002, "未知用户IP");
 			}
 
@@ -62,10 +62,10 @@ public class BizBodImpl implements BizBod {
 			logger.info("call webservice bizcrm bod,pwd:" + pwd + "dataXml:"
 					+ dataXml);
 			String result = bizCrmService.runCrmBiz(pwd, dataXml);
-			logger.info(result);
+			logger.info("call webservice bizcrm bod success, result:"+result);
 			BizCrmResponse response = BizCrmResponse.parse(result);
 			if("0".equals(response.getResult())){
-				return new BodResponse(0);
+				return new BodResponse(0, "操作成功");
 			}else{
 				return new BodResponse(-1, "操作失败");
 			}
