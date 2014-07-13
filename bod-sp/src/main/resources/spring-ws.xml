@@ -5,7 +5,9 @@
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 	
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<bean id="webServiceConfig" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	    <property name="order" value="2" />  
+	    <property name="ignoreUnresolvablePlaceholders" value="true" /> 
 		<property name="locations" value="classpath:webservices.properties" />
 	</bean>
 	

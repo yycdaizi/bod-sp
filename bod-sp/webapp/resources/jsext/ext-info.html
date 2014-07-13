@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/css/bootstrap.min.css">
+
+<script src="http://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/twitter-bootstrap/3.0.3/js/bootstrap.min.js"></script>
+
+<title>ext info</title>
+</head>
+<body>
+
+<div class="container" style="width:90%;">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="bs-sidebar hidden-print">
+				<ul>
+<!-- 				<ul class="nav bs-sidenav"> -->
+					<li>
+						<a href="#jquery.ext">juqery扩展(jquery.ext.js)</a>
+						<ul> <!--  class="nav" -->
+							<li><a href="#jQuery.fn.serializeObject">jQuery.fn.serializeObject</a></li>
+							<li><a href="#jQuery.customParam">jQuery.customParam</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#jquery.easyui.ext">juqery easyui扩展(jquery.easyui.ext.js)</a>
+						<ul>
+							<li><a href="#validate-rules">扩展验证类型</a></li>
+							<li><a href="#datagrid-editors">扩展表格编辑框</a></li>
+							<li><a href="#">jQuery.fn.combobox.mappingText</a></li>
+							<li><a href="#">jQuery.fn.datagrid.validateData</a></li>
+							<li><a href="#">jQuery.fn.tabs.updateIcon</a></li>
+							<li><a href="#">jQuery.fn.form.loadData</a></li>
+							<li><a href="#">jQuery.fn.getValue</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#app">系统扩展(app.js)</a>
+						<ul>
+							<li><a href="#">Class for oop</a></li>
+							<li><a href="#">Array.clone()</a></li>
+							<li><a href="#">app</a>
+								<ul>
+									<li><a href="#">modalDialog()</a></li>
+									<li><a href="#">postJSON()</a></li>
+									<li><a href="#">formatString()</a></li>
+									<li><a href="#">operateButton()</a></li>
+									<li><a href="#">operateSplit</a></li>
+									<li><a href="#">getAge()</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<!-- jquery.ext.js -->
+			<div class="page-header">
+				<h1 id="jquery.ext">juqery扩展(jquery.ext.js)</h1>
+			</div>
+            <div id="jQuery.fn.serializeObject" class="">
+            	<h3>jQuery.fn.serializeObject</h3>
+           		<p>将一个表单序列化为json对象，可支持子对象和数组。即：</p>
+           		<table class="table">
+           			<tr>
+           				<td>表单值</td>
+           				<td></td>
+           				<td>对象值</td>
+           			</tr>
+           			<tr>
+           				<td>{abc:'123'}</td>
+           				<td>==></td>
+           				<td>{abc:'123'}</td>
+           			</tr>
+           			<tr>
+           				<td>{abc.ab:'123'}</td>
+           				<td>==></td>
+           				<td>{abc:{ab:'123'}}</td>
+           			</tr>
+           			<tr>
+           				<td>{abc[0]:'123', abc[1]:'234'}</td>
+           				<td>==></td>
+           				<td>{abc:['123', '234']}</td>
+           			</tr>
+           			<tr>
+           				<td>{abc[0].ab:'123', abc[1].bc:'234'}</td>
+           				<td>==></td>
+           				<td>{abc:[{ab:'123'}, {bc:'234'}]}</td>
+           			</tr>
+           		</table>
+            </div>
+            
+            <div id="jQuery.customParam" class="">
+            	<h3>jQuery.customParam</h3>
+           		<p>jquery发送ajax请求时，会调用jQuery.param把数据转换为请求参数。它将{a:[{b:1}]}这种数据转换为 a[1][b]=1。
+					而spring mvc进行参数绑定的时候，会将a[1][b]=1这种格式解析为 数组/List/Set/Map类型属性a的第1个元素是一个List/Set/Map类型的对象，
+					对象中有个(b:1)的键值对。但是，实际上我们一般想要的是 数组/List/Set/Map类型属性a 的第1个元素是一个对象，对象的b属性的值是1。
+					因此，要将{a:[{b:1}]}这种数据转换为 a[1].b=1 才能达到我们的要求。为解决这个问题而扩展了此方法。使用时需主动调用此方法把数据转成字符串后再传给jquery。
+				</p>
+            </div>
+            
+            
+			<!-- jquery.easyui.ext.js -->
+			<div class="page-header">
+				<h1 id="jquery.easyui.ext">juqery easyui扩展(jquery.easyui.ext.js)</h1>
+			</div>
+            
+            <div id="validate-rules" class="">
+            	<h3>扩展验证类型</h3>
+           		<ul>
+           			<li>minLength</li>
+           			<li>maxLength</li>
+           			<li>length</li>
+           			<li>phone</li>
+           			<li>mobile</li>
+           			<li>phoneOrMobile</li>
+           			<li>idcard</li>
+           			<li>floatOrInt</li>
+           			<li>currency</li>
+           			<li>integer</li>
+           			<li>unnormal</li>
+           			<li>username</li>
+           			<li>postalCode</li>
+           			<li>name</li>
+           			<li>same</li>
+           			<li>datebefore</li>
+           			<li>dateafter</li>
+           			<li>comboboxfixed</li>
+           			<li>fixedin</li>
+           		</ul>
+            </div>
+            
+            <div id="datagrid-editors" class="">
+            	<h3>扩展表格编辑框</h3>
+           		<ul>
+           			<li>my97</li>
+           			<li>autocompletebox</li>
+           		</ul>
+            </div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
