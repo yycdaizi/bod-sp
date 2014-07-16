@@ -6,26 +6,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.ort.bodsp.core.vo.GridPage;
-import com.ort.bodsp.wslog.po.Orders;
-import com.ort.bodsp.wslog.service.OrdersService;
+import com.ort.bodsp.wslog.po.InterfaceLog;
+import com.ort.bodsp.wslog.service.InterfaceLogService;
 import com.ort.bodsp.wslog.vo.OrdersParam;
 
 @Controller
-@RequestMapping("/wslog/orders")
-public class OrdersController {
+@RequestMapping("/wslog")
+public class InterfaceLogController {
 
 	@Autowired
-	private OrdersService ordersService;
+	private InterfaceLogService interfaceLogService;
 	
 	@RequestMapping
 	public String index(){
-		return "wslog/ordersList";
+		return "wslog/logList";
 	}
 	
 	@RequestMapping("/page")
 	@ResponseBody
-	public GridPage<Orders> page(OrdersParam param) {
-		GridPage<Orders> page = GridPage.valueOf(ordersService.queryForPage(param));
+	public GridPage<InterfaceLog> page(OrdersParam param) {
+		GridPage<InterfaceLog> page = GridPage.valueOf(interfaceLogService.queryForPage(param));
 		return page;
 	}
 }

@@ -8,18 +8,18 @@ import org.springframework.stereotype.Repository;
 
 import com.ort.bodsp.core.dao.BaseDaoImpl;
 import com.ort.bodsp.core.vo.Pagination;
-import com.ort.bodsp.wslog.dao.OrdersDao;
-import com.ort.bodsp.wslog.po.Orders;
+import com.ort.bodsp.wslog.dao.InterfaceLogDao;
+import com.ort.bodsp.wslog.po.InterfaceLog;
 import com.ort.bodsp.wslog.vo.OrdersParam;
 
 @Repository
-public class OrdersDaoImpl extends BaseDaoImpl<Orders> implements OrdersDao{
+public class InterfaceLogDaoImpl extends BaseDaoImpl<InterfaceLog> implements InterfaceLogDao{
 
 	@Override
-	public Pagination<Orders> queryForPage(OrdersParam param) {
+	public Pagination<InterfaceLog> queryForPage(OrdersParam param) {
 		StringBuilder hql = new StringBuilder();
 		hql.append("from ");
-		hql.append(Orders.class.getName());
+		hql.append(InterfaceLog.class.getName());
 		hql.append(" obj where 1=1");
 
 		Map<String, Object> paramMap = new HashMap<String, Object>();

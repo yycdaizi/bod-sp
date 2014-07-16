@@ -6,52 +6,45 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.GenericGenerator;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name = "SPORDERS")
-public class Orders implements Serializable {
+@Table(name = "BOD_INTERFACE_LOG")
+public class InterfaceLog implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name = "seq", sequenceName = "SEQ_SPORDERS_ID")
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
-	@Column(name = "ORDERID")
-	private Long id;
-
-	@Column(name = "TRANSID")
-	private String transId;
+	@GenericGenerator(name = "systemUUID", strategy = "uuid")
+	@GeneratedValue(generator = "systemUUID")
+	@Column(name = "ID")
+	private String id;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "ACCEPT_TIME")
 	private Date acceptTime;
 
-	@Column(name = "ORDER_TYPE")
-	private String orderType;
-
-	@Column(name = "USERIP")
-	private String userIP;
-
-	@Column(name = "SPID")
-	private Long spId;
-
-	@Column(name = "ORIGINIP")
-	private String originIP;
-
 	@Column(name = "CONTENT")
 	private String content;
+	
+	@Column(name = "INTERFACE_ID")
+	private String interfaceId;
 
 	@Column(name = "ORDER_STATUS")
 	private String orderStatus;
+
+	@Column(name = "ORDER_TYPE")
+	private String orderType;
+
+	@Column(name = "ORIGIN_IP")
+	private String originIP;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -61,11 +54,20 @@ public class Orders implements Serializable {
 	@Column(name = "REASON")
 	private String reason;
 
-	public Long getId() {
+	@Column(name = "SP_ID")
+	private Long spId;
+	
+	@Column(name = "TRANS_ID")
+	private String transId;
+
+	@Column(name = "USER_IP")
+	private String userIP;
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -147,6 +149,14 @@ public class Orders implements Serializable {
 
 	public void setReason(String reason) {
 		this.reason = reason;
+	}
+
+	public String getInterfaceId() {
+		return interfaceId;
+	}
+
+	public void setInterfaceId(String interfaceId) {
+		this.interfaceId = interfaceId;
 	}
 
 }
