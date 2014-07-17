@@ -7,6 +7,8 @@ import com.ort.bodsp.util.MD5Utils;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class BodRequest {
+	public static final String OPERTYPE_START = "Start";
+	public static final String OPERTYPE_STOP = "Stop";
 
 	// 交易id,由应用生成的唯一流水号
 	private String transId;

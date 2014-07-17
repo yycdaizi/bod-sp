@@ -22,4 +22,9 @@ public class InterfaceLogServiceImpl implements InterfaceLogService{
 		return interfaceLogDao.queryForPage(param);
 	}
 
+	@Override
+	public void save(InterfaceLog entity) {
+		interfaceLogDao.save(entity);
+	}
+
 }

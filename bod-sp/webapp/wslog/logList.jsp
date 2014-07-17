@@ -13,7 +13,7 @@
 			fit: true,
 			autoRowHeight: false, 
 			singleSelect: true, 
-			url:'${pageContext.request.contextPath}/wslog/orders/page',
+			url:'${pageContext.request.contextPath}/wslog/page',
 			pagination: true,
 			rownumbers: true,
 			fitColumns: true,

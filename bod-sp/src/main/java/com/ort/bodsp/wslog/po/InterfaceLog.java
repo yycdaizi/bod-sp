@@ -55,7 +55,7 @@ public class InterfaceLog implements Serializable {
 	private String reason;
 
 	@Column(name = "SP_ID")
-	private Long spId;
+	private String spId;
 	
 	@Column(name = "TRANS_ID")
 	private String transId;
@@ -103,11 +103,11 @@ public class InterfaceLog implements Serializable {
 		this.userIP = userIP;
 	}
 
-	public Long getSpId() {
+	public String getSpId() {
 		return spId;
 	}
 
-	public void setSpId(Long spId) {
+	public void setSpId(String spId) {
 		this.spId = spId;
 	}
 

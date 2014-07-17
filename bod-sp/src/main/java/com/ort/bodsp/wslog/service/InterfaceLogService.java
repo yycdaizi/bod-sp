@@ -8,4 +8,5 @@ public interface InterfaceLogService {
 
 	Pagination<InterfaceLog> queryForPage(OrdersParam param);
 
+	void save(InterfaceLog entity);
 }

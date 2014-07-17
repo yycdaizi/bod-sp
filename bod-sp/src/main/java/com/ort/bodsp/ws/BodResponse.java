@@ -5,8 +5,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name="BodResponse")
+@XmlType(name = "BodResponse")
 public class BodResponse {
+	public static final int RESULT_SUCCESS = 0;
+	public static final int RESULT_FAIL = -1;
+	public static final int RESULT_BAD_REQUEST = -1001;
+	public static final int RESULT_UNKNOW_IP = -1002;
 
 	private Integer result;
 	private String errorDetail;
@@ -14,7 +18,7 @@ public class BodResponse {
 	public BodResponse() {
 		super();
 	}
-	
+
 	public BodResponse(Integer result) {
 		super();
 		this.result = result;
